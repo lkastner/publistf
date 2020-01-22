@@ -14,8 +14,7 @@
 
 $sanitiser = function ($inputstr) {
     $search_array = array(
-        '\$', '\&', '\%', '\#', '\_', '\{', '\}',   // specials
-        '{', '}',                                   // emphasizers
+        '\$', '\&', '\%', '\#', '\_',   // specials
         "\'a", "\'e", "\'i", "\'o", "\'u",      // acute
         "\'A", "\'E", "\'I", "\'O", "\'U",
         '\`a', '\`e', '\`i', '\`o', '\`u',      // grave
@@ -30,11 +29,10 @@ $sanitiser = function ($inputstr) {
         '\~I', '\~n', '\~N', '\~o', '\~O',
         '\~u', '\~U',
         '\cc', '\cC',
-        '~', '\,', '\\'                         // space
+        '~'
     );
     $replace_array = array(
-        '$', '&', '%', '#', '_', '<html>&#123;</html>', '<html>&#125;</html>',
-        '','',
+        '$', '&', '%', '#', '_', 
         'á', 'é', 'í', 'ó', 'ú',
         'Á', 'É', 'Í', 'Ó', 'Ú',
         'à', 'è', 'ì', 'ò', 'ù',
@@ -49,7 +47,7 @@ $sanitiser = function ($inputstr) {
         'Ĩ', 'ñ', 'Ñ', 'õ', 'Õ',
         'ũ', 'Ũ',
         'ç', 'Ç',
-        "\xC2\xA0", ' ', ' '
+        "\xC2\xA0"
     );
     $outputstr = str_replace($search_array, $replace_array, $inputstr);
     return $outputstr;
